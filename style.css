@@ -1,0 +1,14 @@
+#tablero {
+    display: grid;
+    grid-template-columns: repeat(6, 60px);
+}
+
+.celda {
+    width: 60px;
+    height: 60px;
+    background-color: oklch(0.639 0.1381 264.97);
+    border: 1px solid black;
+    border-radius: 10px;
+    justify-content: center;
+    margin: 0.5rem;
+}
