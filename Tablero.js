@@ -10,7 +10,18 @@ class Tablero {
             () => Array(6).fill(null)
         );
     }
-//todo código creado a partir de aquí, se escribió bajo los efectos del alcohol
+    //todo código creado a partir de aquí, se escribió bajo los efectos del alcohol
+
+    select(x,y){
+        if (this.estadoTablero[x][y] !== null || this.bloqueado) return;
+        this.estadoTablero[x][y] = 'selected';
+        this.assignCards();
+        if(!this.primera) {this.primera = [x,y]; return;}
+        const [x1, y1] = this.primera;
+        this.primera = null;
+        this.bloqueado = true;
+        setTimeout(() =>  {this.game(x1, y1, x, y); this.bloqueado= false;}, 800);
+    }
     iniciarHTML(){
         for(let x=0; x < 5; x++){
             for (let y = 0; y<6;y++){
@@ -18,7 +29,6 @@ class Tablero {
                 let num = y+1;
                 let id = letter + num;
                 let div = document.createElement('div');
-                div.addEventListener('click', () => this.seleccionar(x,y));
                 div.id = id;
                 div.classList.add('celda');
 
@@ -26,6 +36,7 @@ class Tablero {
                 ico.classList.add('ico');
 
                 div.appendChild(ico);
+                div.addEventListener('click', () => this.seleccionar(x,y));
                 document.getElementById('tablero').appendChild(div);
             }
         }
@@ -81,15 +92,6 @@ class Tablero {
         }
     }
     
-    select(x,y){
-        if (this.estadoTablero[x][y] !== null || this.bloqueado) return;
-        this.estadoTablero[x][y] = 'selected';
-        this.assignCards();
-        if(!this.primera) {this.primera = [x,y]; return;}
-        const [x1, y1] = this.primera;
-        this.primera = null;
-        this.bloqueado = true;
-        setTimeout(() =>  {this.game(x1, y1, x, y); this.bloqueado= false;}, 800);
-    }
+
 
 }

@@ -1,3 +1,27 @@
+:root{
+    --primary-font: "Jersey 10", sans-serif;
+}
+
+/*paleta temporal:
+#CBC8C6
+#252E32
+#CDBB21
+#823C36*/
+
+*,*::after,*::before{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background: url("img/wallpaper.png");
+}
+
+main{
+    display: flex;
+    background: #ffffff;
+    
+}
+
+
 #tablero {
     display: grid;
     grid-template-columns: repeat(6, 60px);
