@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,10 +16,11 @@
     <main class="start">
         <div class="interfaz-container">
             <h1>Emparejados</h1>
-            <form id='start' method="post" action="conexion.php">
-                <input type="text" id="userName" name="name" placeholder="Introduce el nombre del jugador">
+            <form id='start'>
+                <input type="text" id="userName" maxLength="15" placeholder="Introduce el nombre del jugador">
+                <p id='error' hidden>Escribe un nombre para jugar</p>
                 <div class="botones">
-                    <button class="jugar">
+                    <button type="button" id='btnJugar'>
                         <a href="juego.php">Jugar</a>
                     </button>
                 </div>
@@ -27,6 +30,19 @@
     </main> 
         
     </div>
-    <script></script>
+    <script>
+        document.getElementById('start').addEventListener('submit', (e) => {
+            e.preventDefault(); //no envía el formulario
+
+            const name = document.getElementById('userName').value.trim();
+            if(name === ''){
+                document.getElementById('error').hidden = false;
+                return; //control de error
+            }
+
+            sessionStorage.setItem('usuario',name);
+            window.location.href='juego.php';
+        })
+    </script>
 </body>
 </html>

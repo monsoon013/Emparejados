@@ -1,7 +1,7 @@
 
 class Tablero {
-    constructor(){
-        this.username = "";
+    constructor(username){
+        this.username = username;
         this.tablero = [];
         this.primera = null;
         this.bloqueado = false;
@@ -30,9 +30,21 @@ class Tablero {
 
     toJSON(){
         return {
-            name: this.username,
-            score: this.score
+            usuario: this.username,
+            puntuacion: this.score
         };
+    }
+    
+    async save(){
+        try{
+            const res = await fetch('guardar.php', {
+                method:'POST',
+                body: JSON.stringify(this)
+            });
+            return res.ok;
+        }catch (duendeJSON){
+            return false;
+        }
     }
 
     select(x,y){
@@ -59,9 +71,6 @@ class Tablero {
     }
 
     iniciarHTML(){
-        this.username = document.getElementById('userName').value;
-        console.log(this.username);
-
         for(let x=0; x < 5; x++){
             for (let y = 0; y<6;y++){
                 let letter = this.row[x];
@@ -148,7 +157,7 @@ class Tablero {
                     ico.style.backgroundColor = 'oklch(0.639 0.1381 264.97)';
                 }else {
                     ico.style.backgroundImage = `url(${this.icons[this.tablero[x][y] -1]})`;
-                    ico.style.backgrundColor = (estado === 'selected') ? 'oklch(0.639 0.148 22.02)' : 'oklch(0.639 0.0617 135.32)';
+                    ico.style.backgroundColor = (estado === 'selected') ? 'oklch(0.639 0.148 22.02)' : 'oklch(0.639 0.0617 135.32)';
                 }
             }
         }

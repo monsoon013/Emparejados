@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Emparejados</title>
-    <script src="Tablero.js" type="text/javascript"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,6 +17,8 @@
             <div class="temp">
                 <p>Puntuación: <span class="score">0</span></p>
                 <p>Tiempo: <span id="tiempo">60</span></p>
+                <p>Jugador: <span id="nombre"></span></p>
+                <p>Errores: <span class="mstks">0</span></p>
             
             </div>
 
@@ -29,8 +30,8 @@
             <p>El tiempo se acabó :(</p>
             <p>Puntuación: <span class="score">0</span></p>
             <div class="botones">
-                <button class="inicio"><a href="index.php">Ir al inicio</a></button>
-                <button class="jugar"><a href="juego.php">Volver a jugar</a></button>
+                <button type="button" class="btnInicio">Ir al inicio</button>
+                <button type="button" class="btnVolver">Volver a jugar</button>
             </div>
         </div>
     </div>
@@ -40,8 +41,8 @@
             <p>Ganaste!</p> 
             <p>Puntuación: <span class="score">0</span></p>
             <div class="botones">
-                <button class="inicio"><a href="index.php">Ir al inicio</a></button>
-                <button class="again"><a href="juego.php">Volver a jugar</a></button>
+                <button type="button" class="btnInicio">Ir al inicio</button>
+                <button type="button" class="btnVolver">Volver a jugar</button>
             </div>
 
         </div>
@@ -49,12 +50,42 @@
     
     
         
-    </div>
+    
+    <script src="Tablero.js"></script>
     <script>
-        let tablero = new Tablero()
-        tablero.iniciarHTML()
-        tablero.assignValues()
-        tablero.assignCards()
+        const user = sessionStorage.getItem('usuario');
+        if(!user){
+            window.location.href='index.php';
+        }else{
+            const tablero = new Tablero(user);
+            tablero.loadIcons();
+            tablero.iniciarHTML();
+            tablero.assignValues();
+            tablero.assignCards();
+            document.getElementById('nombre').textContent=tablero.username;
+            document.querySelectorAll('.btnVolver').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    location.reload();
+                });
+            });
+
+            document.querySelectorAll('.btnInicio').forEach(btn=>{
+                btn.addEventListener('click', async() =>{
+                    const btns = document.querySelectorAll('.btnInicio');
+                    btns.forEach(b=>b.disabled = true);
+
+                    const ok = await tablero.save();
+
+                    if(ok){
+                        window.location.href='index.php';
+                    }else{
+                        console.log("bueno, non se gardou a partida xd");
+                        btns.forEach(b=>b.disabled = false);
+                    }
+                })
+            })
+        }
     </script>
+    
 </body>
 </html>
