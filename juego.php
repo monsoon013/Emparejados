@@ -29,8 +29,8 @@
             <p>El tiempo se acabó :(</p>
             <p>Puntuación: <span class="score">0</span></p>
             <div class="botones">
-                <button class="inicio"><a href="/Emparejados/index.html">Ir al inicio</a></button>
-                <button class="jugar"><a href="/Emparejados/juego.html">Volver a jugar</a></button>
+                <button class="inicio"><a href="index.php">Ir al inicio</a></button>
+                <button class="jugar"><a href="juego.php">Volver a jugar</a></button>
             </div>
         </div>
     </div>
@@ -40,8 +40,8 @@
             <p>Ganaste!</p> 
             <p>Puntuación: <span class="score">0</span></p>
             <div class="botones">
-                <button class="inicio"><a href="/Emparejados/index.html">Ir al inicio</a></button>
-                <button class="again"><a href="/Emparejados/juego.html">Volver a jugar</a></button>
+                <button class="inicio"><a href="index.php">Ir al inicio</a></button>
+                <button class="again"><a href="juego.php">Volver a jugar</a></button>
             </div>
 
         </div>

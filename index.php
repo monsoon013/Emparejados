@@ -14,9 +14,10 @@
     <main class="start">
         <div class="interfaz-container">
             <h1>Emparejados</h1>
+            <input type="text" id="userName" name="name" placeholder="Introduce el nombre del jugador">
             <div class="botones">
                 <button class="jugar">
-                    <a href="/Emparejados/juego.html">Jugar</a>
+                    <a href="juego.php">Jugar</a>
                 </button>
             </div>
             <div id="ranking"></div>

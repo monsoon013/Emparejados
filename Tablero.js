@@ -19,9 +19,7 @@ class Tablero {
                 this.estadoTablero[x][y] = null;
             }
         }
-        this.icons = [
-            'img/ico_1.png'
-        ];
+        this.icons = Array.from({length:15}, (_,i) => `img/ico_${i+1}.png`);
     }
     //todo código creado a partir de aquí, se escribió bajo los efectos del alcohol
 
@@ -135,14 +133,11 @@ class Tablero {
                 let ico = document.querySelector('#' + letra + num + ' .ico');
                 let estado = this.estadoTablero[x][y];
                 if(estado === null){
-                    ico.textContent = '';
-                    ico.style.background = 'oklch(0.639 0.1381 264.97)';
-                }else if(estado === 'selected'){
-                    ico.textContent = this.tablero[x][y];
-                    ico.style.background = 'oklch(0.639 0.148 22.02)';
-                }else if(estado === 'completed'){
-                    ico.textContent = this.tablero[x][y];
-                    ico.style.background = 'oklch(0.639 0.0617 135.32)';
+                    ico.style.backgroundImage = 'none';
+                    ico.style.backgroundColor = 'oklch(0.639 0.1381 264.97)';
+                }else {
+                    ico.style.backgroundImage = `url(${this.icons[this.tablero[x][y] -1]})`;
+                    ico.style.backgrundColor = (estado === 'selected') ? 'oklch(0.639 0.148 22.02)' : 'oklch(0.639 0.0617 135.32)';
                 }
             }
         }

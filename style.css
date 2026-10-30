@@ -99,6 +99,9 @@ main{
     justify-content: center;
     align-items: center;
     border-radius: inherit;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 #ranking{
@@ -149,4 +152,10 @@ p, span {
     justify-content: space-evenly;
     padding: 1vw;
     gap:2vw;
+}
+
+#userName{
+    margin: 1rem;
+    padding: 1vw;
+    border-radius: 5px;
 }
