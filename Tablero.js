@@ -7,7 +7,7 @@ class Tablero {
         this.bloqueado = false;
         this.acc = 0;
         this.row = ['A', 'B', 'C', 'D', 'E'];
-        this.timer = 10;
+        this.timer = 60;
         this.score = 0;
         this.mstks = 0;
         this.intervalo = null;
@@ -107,7 +107,7 @@ class Tablero {
 
         this.assignCards();
         this.updateScore();
-        if(this.acc===1){this.finished(true);}
+        if(this.acc===15){this.finished(true);}
 
 
     }

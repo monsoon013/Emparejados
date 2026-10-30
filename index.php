@@ -1,4 +1,14 @@
+<?php
+require __DIR__ . '/conexion.php';
 
+$peticion = new MongoDB\Driver\Query([], 
+    [
+        'sort' => 
+            ['puntuacion' => -1],
+            'limit' => 5
+    ]);
+$cursor = $manager->executeQuery($coll, $peticion);
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,12 +30,17 @@
                 <input type="text" id="userName" maxLength="15" placeholder="Introduce el nombre del jugador">
                 <p id='error' hidden>Escribe un nombre para jugar</p>
                 <div class="botones">
-                    <button type="button" id='btnJugar'>
-                        <a href="juego.php">Jugar</a>
-                    </button>
+                    <button type="submit" id='btnJugar'>Jugar</button>
                 </div>
             </form>
-            <div id="ranking"></div>
+            <div id="ranking">
+                <h2>TOP 5</h2>
+                <?php
+                foreach ($cursor as $p){
+                    echo '<p>' . htmlspecialchars($p->usuario) . ': ' . $p->puntuacion . '</p>';
+                }
+                ?>
+            </div>
         </div>
     </main> 
         

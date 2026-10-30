@@ -111,6 +111,9 @@ main{
     margin: 1vw;
     border-radius: 5px;
     border: 1px solid black;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 p, span {
