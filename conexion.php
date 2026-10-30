@@ -18,7 +18,14 @@
         $resultado = $manager->executeBulkWrite(
             "memo_game_db.ranking",
             $bulk
-        );
+        ); 
+
+        if($resultado->getInsertedCount() !== 1){
+            throw new RuntimeException(
+                "mira eu non sei que fixeches, pero aquí non hai nada";
+            );
+        }
+        
     }
 
 ?>

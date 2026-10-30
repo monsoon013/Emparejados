@@ -1,6 +1,7 @@
 
 class Tablero {
     constructor(){
+        this.username = "";
         this.tablero = [];
         this.primera = null;
         this.bloqueado = false;
@@ -27,6 +28,13 @@ class Tablero {
         this.icons.forEach(src => {new Image().src = src;})
     }
 
+    toJSON(){
+        return {
+            name: this.username,
+            score: this.score
+        };
+    }
+
     select(x,y){
         if (this.terminado || this.estadoTablero[x][y] !== null || this.bloqueado) return;
 
@@ -51,6 +59,9 @@ class Tablero {
     }
 
     iniciarHTML(){
+        this.username = document.getElementById('userName').value;
+        console.log(this.username);
+
         for(let x=0; x < 5; x++){
             for (let y = 0; y<6;y++){
                 let letter = this.row[x];

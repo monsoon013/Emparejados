@@ -14,12 +14,14 @@
     <main class="start">
         <div class="interfaz-container">
             <h1>Emparejados</h1>
-            <input type="text" id="userName" name="name" placeholder="Introduce el nombre del jugador">
-            <div class="botones">
-                <button class="jugar">
-                    <a href="juego.php">Jugar</a>
-                </button>
-            </div>
+            <form id='start' method="post" action="conexion.php">
+                <input type="text" id="userName" name="name" placeholder="Introduce el nombre del jugador">
+                <div class="botones">
+                    <button class="jugar">
+                        <a href="juego.php">Jugar</a>
+                    </button>
+                </div>
+            </form>
             <div id="ranking"></div>
         </div>
     </main> 
