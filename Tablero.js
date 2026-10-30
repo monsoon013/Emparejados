@@ -19,8 +19,15 @@ class Tablero {
                 this.estadoTablero[x][y] = null;
             }
         }
+        this.icons = [
+            'img/ico_1.png'
+        ];
     }
     //todo código creado a partir de aquí, se escribió bajo los efectos del alcohol
+
+    loadIcons(){
+        this.icons.forEach(src => {new Image().src = src;})
+    }
 
     select(x,y){
         if (this.terminado || this.estadoTablero[x][y] !== null || this.bloqueado) return;
