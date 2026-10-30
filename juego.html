@@ -4,11 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Emparejados</title>
-    <link rel="stylesheet" href="style.css">
     <script src="Tablero.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="tablero">
+    <main>
+        <div class="interfaz-container">
+            
+            <div id="tablero"></div>
+            <div class="temp">
+                <p>Puntuación: <span class="score">0</span></p>
+                <p>Tiempo: <span id="tiempo">60</span></p>
+            
+            </div>
+
+        </div>
+        
+    </main>
+    <div id="gameOver" class="overlay">
+        <div class="modal">
+            <p>El tiempo se acabó :(</p>
+            <p>Puntuación: <span class="score">0</span></p>
+            <div class="botones">
+                <button class="inicio"><a href="/Emparejados/index.html">Ir al inicio</a></button>
+                <button class="jugar"><a href="/Emparejados/juego.html">Volver a jugar</a></button>
+            </div>
+        </div>
+    </div>
+
+    <div id="win" class="overlay">
+        <div class="modal">
+            <p>Ganaste!</p> 
+            <p>Puntuación: <span class="score">0</span></p>
+            <div class="botones">
+                <button class="inicio"><a href="/Emparejados/index.html">Ir al inicio</a></button>
+                <button class="again"><a href="/Emparejados/juego.html">Volver a jugar</a></button>
+            </div>
+
+        </div>
+    </div>
+    
+    
         
     </div>
     <script>
@@ -16,7 +55,6 @@
         tablero.iniciarHTML()
         tablero.assignValues()
         tablero.assignCards()
-        tablero.select()
     </script>
 </body>
 </html>

@@ -12,27 +12,141 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+
+}
+
+body{
     background: url("img/wallpaper.png");
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: var(--primary-font);
+}
+
+button {
+    background: #CDBB21;
+    font-family: var(--primary-font);
+    padding: 1vw;
+    font-size: 1vw;
+    border: 2px solid #823C36;
+    border-radius: 5px;
+}
+
+button:hover{
+    background: #823C36;
+    color: #CBC8C6;
+}
+
+button:hover a:visited{
+    color: #CBC8C6;
+}
+
+.botones a:link{
+    color: #252E32;
+    text-decoration: none;
+}
+
+.botones a:visited{
+    color: #252E32;
 }
 
 main{
     display: flex;
-    background: #ffffff;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    border: 1px solid black;
     
 }
 
+.interfaz-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    border: 1px solid black;
+    padding: 0 15vh ;
+    background: #ffffff;
+}
 
 #tablero {
     display: grid;
-    grid-template-columns: repeat(6, 60px);
+    grid-template-columns: repeat(6, 1fr);
+    background: #ffffff;
+    
+    
 }
 
 .celda {
-    width: 60px;
-    height: 60px;
-    background-color: oklch(0.639 0.1381 264.97);
+    display: flex;
+    align-items: center;
+    margin: 0.5rem;
+    width: 5rem;
+    height: 5rem;
+    background: oklch(0.639 0.1381 264.97) !important;
     border: 1px solid black;
     border-radius: 10px;
     justify-content: center;
-    margin: 0.5rem;
+}
+
+.ico {
+    width: 5rem;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: inherit;
+}
+
+#ranking{
+    display: flex;
+    width: 100%;
+    height: auto;
+    margin: 1vw;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+p, span {
+    color: black;
+    background: white;
+}
+
+.overlay{
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgb(0 0 0 / 0.4);
+    z-index: 2;
+}
+
+.overlay.activo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal{
+    background: #ffffff;
+    padding: 3vw;
+    border-radius: 5px;
+    max-width: 90%;
+    text-align: center;
+    background: #ffffff;
+    border: 3px solid #CDBB21;
+}
+
+.modal p{
+    font-size: clamp(1.5rem, 5vw, 3rem);
+}
+
+.botones {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 1vw;
+    gap:2vw;
 }
